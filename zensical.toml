@@ -48,7 +48,7 @@ Copyright &copy; 2026 The authors
 #
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-  { "Quickstart" = "quickstart.md" },
+  { "Quickstart" = "index.md" },
   { "Settings" = "settings.md" },
   { "Caching" = "caching.md" },
   { "Extensions" = [
