@@ -1,0 +1,79 @@
+[project]
+name = "django-knobs"
+version = "0.0.1"
+description = "Feature flags for Django projects."
+readme = "README.md"
+classifiers = [
+   	"Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
+    "Intended Audience :: Developers",
+   	"License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Topic :: Utilities",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5",
+]
+
+[project.optional-dependencies]
+history = ["django-simple-history>=3.10"]
+
+[dependency-groups]
+dev = [
+    {include-group = "example"},
+    {include-group = "test"},
+    {include-group = "lint"},
+    {include-group = "docs"},
+    "prek>=0.3.4",
+]
+example = [
+    "granian[reload]>=2.7.2",
+    "psycopg[binary]>=3.1",
+    "whitenoise>=6.0",
+]
+test = [
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "pytest-django>=4.12.0",
+    "pytest-mock>=3.14.0",
+]
+lint = [
+    "ruff>=0.15.5",
+]
+docs = [
+    "zensical>=0.0.24",
+]
+
+[build-system]
+requires = ["uv_build>=0.10"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "knobs"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "TID",
+]

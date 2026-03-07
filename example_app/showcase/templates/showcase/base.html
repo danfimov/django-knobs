@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>django-knobs example</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 2rem auto; padding: 0 1rem; color: #222; }
+    nav a { margin-right: 1rem; }
+    .banner { background: #dbeafe; border: 1px solid #93c5fd; border-radius: 6px; padding: .75rem 1rem; margin-bottom: 1.5rem; }
+    .card { border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 1rem; }
+    .card h3 { margin-top: 0; }
+    .tag { display: inline-block; background: #f3f4f6; border-radius: 4px; padding: 2px 8px; font-size: .8rem; font-family: monospace; }
+    .on  { background: #dcfce7; color: #166534; }
+    .off { background: #fee2e2; color: #991b1b; }
+    pre { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: .75rem; overflow-x: auto; font-size: .85rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid #e5e7eb; }
+    th { background: #f9fafb; }
+  </style>
+</head>
+<body>
+  <h1>django-knobs showcase</h1>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/api/knobs/">JSON API</a>
+    <a href="/admin/knobs/knobvalue/">Admin (edit knobs)</a>
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+  <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+  &rsaquo; Config
+</div>
+{% endblock %}
+
+{% block content_title %}<h1>Config</h1>{% endblock %}
+
+{% block content %}
+<style>
+  details.knob-category { margin-bottom: 1.5rem; }
+  details.knob-category > summary {
+    cursor: pointer;
+    padding: .5rem .75rem;
+    background: #417690;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: .03em;
+    list-style: none;
+    border-radius: 4px 4px 0 0;
+    user-select: none;
+  }
+  details.knob-category > summary::-webkit-details-marker { display: none; }
+  details.knob-category > summary::before { content: "▶ "; font-size: .7em; }
+  details.knob-category[open] > summary::before { content: "▼ "; }
+  details.knob-category > fieldset {
+    border: 1px solid #ccc;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+    padding: 0;
+  }
+  .knob-row {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr;
+    gap: .5rem 1.5rem;
+    align-items: start;
+    padding: .9rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .knob-default { padding-top: .25rem; color: #666; font-size: .8rem; cursor: default; }
+  .knob-default code { word-break: break-all; }
+  .knob-row:last-child { border-bottom: none; }
+  .knob-row:nth-child(even) { background: #f9f9f9; }
+  .knob-label { padding-top: .25rem; }
+  .knob-label strong { display: block; font-family: monospace; font-size: .9rem; }
+  .knob-label .help { color: #666; font-size: .8rem; margin: .2rem 0 0; }
+  .knob-label .meta { color: #999; font-size: .75rem; margin-top: .3rem; }
+  .knob-input input[type="text"],
+  .knob-input input[type="number"],
+  .knob-input textarea { width: 100%; box-sizing: border-box; }
+  .knob-input input[type="checkbox"] { width: 1.1rem; height: 1.1rem; margin-top: .3rem; }
+</style>
+
+<form method="post" id="knobs-form">
+  {% csrf_token %}
+
+  {% for category, entries in categories.items %}
+  <details class="knob-category" open>
+    <summary>{{ category|title }}</summary>
+    <fieldset class="aligned">
+      {% for entry in entries %}
+      <div class="knob-row">
+        <div class="knob-label">
+          <label for="id_value_{{ entry.name }}">
+            <strong>{{ entry.name }}</strong>
+          </label>
+          {% if entry.knob.help_text %}
+          <p class="help">{{ entry.knob.help_text }}</p>
+          {% endif %}
+        </div>
+        <div class="knob-default">
+          <code title="Default">{{ entry.knob.default }}</code>
+        </div>
+        <div class="knob-input">
+          {{ entry.widget_html }}
+          <input type="hidden" name="ts_{{ entry.name }}" value="{{ entry.updated_at }}">
+        </div>
+      </div>
+      {% endfor %}
+    </fieldset>
+  </details>
+  {% endfor %}
+
+  <div class="submit-row">
+    <input type="submit" value="Save" class="default">
+  </div>
+</form>
+{% endblock %}
