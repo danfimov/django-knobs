@@ -17,28 +17,28 @@ pip install django-knobs
 
 **1. Add to `INSTALLED_APPS`:**
 
-    ```python
-    INSTALLED_APPS = [
-        ...
-        "knobs",
-    ]
-    ```
+  ```python
+  INSTALLED_APPS = [
+      ...
+      "knobs",
+  ]
+  ```
 
 **2. Run migrations:**
 
-    ```bash
-    python manage.py migrate
-    ```
+  ```bash
+  python manage.py migrate
+  ```
 
 **3. Define your config values in `settings.py`:**
 
-    ```python
-    from knobs import Knob
+  ```python
+  from knobs import Knob
 
-    KNOBS_CONFIG = {
-        "MAX_LOGIN_ATTEMPTS": Knob(default=5, help_text="Max failed logins before lockout", category="auth"),
-        "FEATURE_NEW_UI":     Knob(default=False, help_text="Enable redesigned UI", category="features"),
-        "API_TIMEOUT":        Knob(default=30.0, help_text="Outbound request timeout (seconds)", category="api"),
-        "WELCOME_MSG":        Knob(default="Hello!", help_text="Welcome banner text", category="general"),
-    }
-    ```
+  KNOBS_CONFIG = {
+      "MAX_LOGIN_ATTEMPTS": Knob(default=5, help_text="Max failed logins before lockout", category="auth"),
+      "FEATURE_NEW_UI":     Knob(default=False, help_text="Enable redesigned UI", category="features"),
+      "API_TIMEOUT":        Knob(default=30.0, help_text="Outbound request timeout (seconds)", category="api"),
+      "WELCOME_MSG":        Knob(default="Hello!", help_text="Welcome banner text", category="general"),
+  }
+  ```
