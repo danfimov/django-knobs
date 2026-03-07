@@ -1,0 +1,65 @@
+{% extends "showcase/base.html" %}
+{% block content %}
+
+{% if show_banner %}
+<div class="banner">{{ banner_text }}</div>
+{% endif %}
+
+<div class="card">
+  <h3>Boolean knobs</h3>
+  <table>
+    <tr><th>Knob</th><th>Value</th></tr>
+    <tr>
+      <td><code>SHOW_BANNER</code></td>
+      <td><span class="tag {% if show_banner %}on{% else %}off{% endif %}">{{ show_banner }}</span></td>
+    </tr>
+    <tr>
+      <td><code>MAINTENANCE_MODE</code></td>
+      <td><span class="tag {% if not maintenance_mode %}on{% else %}off{% endif %}">{{ maintenance_mode }}</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Numeric knobs</h3>
+  <table>
+    <tr><th>Knob</th><th>Value</th></tr>
+    <tr><td><code>ITEMS_PER_PAGE</code></td><td>{{ items_per_page }}</td></tr>
+    <tr><td><code>RATE_LIMIT_RPS</code></td><td>{{ rate_limit_rps }}</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>String knob — <code>BANNER_TEXT</code></h3>
+  <p>{{ banner_text }}</p>
+</div>
+
+<div class="card">
+  <h3>List knob — <code>ALLOWED_THEMES</code></h3>
+  <p>{% for t in allowed_themes %}<span class="tag">{{ t }}</span> {% endfor %}</p>
+</div>
+
+<div class="card">
+  <h3>Dict knob — <code>FEATURE_FLAGS</code></h3>
+  <table>
+    <tr><th>Flag</th><th>Enabled</th></tr>
+    {% for flag, enabled in feature_flags.items %}
+    <tr>
+      <td><code>{{ flag }}</code></td>
+      <td><span class="tag {% if enabled %}on{% else %}off{% endif %}">{{ enabled }}</span></td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div class="card">
+  <h3>Paginated items ({{ items_per_page }} per page)</h3>
+  <ul>{% for item in items %}<li>{{ item }}</li>{% endfor %}</ul>
+</div>
+
+<p style="color:#6b7280; font-size:.85rem">
+  Go to <a href="/admin/knobs/knobvalue/">Admin → Knob values</a>, change any value, then
+  refresh this page. Same-process changes are instant; in a multi-process setup other workers
+  pick up the change within <strong>SYNC_INTERVAL</strong> seconds (set to 10 s here).
+</p>
+{% endblock %}
