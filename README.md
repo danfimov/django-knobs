@@ -2,7 +2,7 @@
 
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-knobs?style=for-the-badge&logo=python)](https://pypi.org/project/django-knobs/)
 [![PyPI](https://img.shields.io/pypi/v/django-knobs?style=for-the-badge&logo=pypi)](https://pypi.org/project/django-knobs/)
-[![Checks](https://img.shields.io/github/check-runs/danfimov/django-knobs/main?nameFilter=Tests%20(3.12)&style=for-the-badge)](https://github.com/danfimov/django-knobs)
+[![Checks](https://img.shields.io/github/actions/workflow/status/danfimov/django-knobs/code-check.yml?branch=main&style=for-the-badge)](https://github.com/danfimov/django-knobs)
 
 Library for dynamic settings / feature flags that can be changed at runtime without restarting the application from Django admin panel.
 
@@ -11,7 +11,6 @@ pip install django-knobs
 ```
 
 ![](docs/assets/banner.png)
-
 
 ## Setup
 
