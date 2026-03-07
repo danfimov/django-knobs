@@ -30,7 +30,7 @@ site_author = "Dima Anfimov"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://danfimov.github.io/django-knobs/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -55,6 +55,8 @@ nav = [
       "extensions/history.md"
   ]}
 ]
+
+use_directory_urls = true
 
 # With the "extra_css" option you can add your own CSS styling to customize
 # your Zensical project according to your needs. You can add any number of
