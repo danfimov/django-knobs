@@ -39,10 +39,10 @@ KNOBS_CONFIG = {
 **4. Use knobs in your code:**
 
 ```python
-from knobs import knobs
+from knobs import config
 
 def my_view(request):
-    if knobs.FEATURE_NEW_UI:
+    if config.FEATURE_NEW_UI:
         return render(request, "new_ui.html")
     return render(request, "old_ui.html")
 ```

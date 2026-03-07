@@ -22,7 +22,7 @@ class SyncThread(threading.Thread):
         self._interval = interval
         self._cache = cache
         self._registry = registry
-        self._last_max_updated_at: datetime | object = _UNSET
+        self._last_max_updated_at: datetime | object | None = _UNSET
 
     def run(self) -> None:
         while True:
