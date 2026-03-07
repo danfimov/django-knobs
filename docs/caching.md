@@ -66,8 +66,8 @@ django-knobs trades instant cross-process propagation for zero per-request overh
 ```python
 from knobs.signals import knob_post_change
 
-def on_change(sender, name, old_value, new_value, user, **kwargs):
-    print(f"{name} changed from {old_value!r} to {new_value!r} by {user}")
+def on_change(sender, name, old_value, new_value, **kwargs):
+    print(f"{name} changed from {old_value!r} to {new_value!r}")
 
 knob_post_change.connect(on_change)
 ```
